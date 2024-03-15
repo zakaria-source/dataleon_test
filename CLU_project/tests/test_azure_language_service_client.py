@@ -10,8 +10,7 @@ def azure_client():
     Fixture to initialize the Azure Language Service Client.
     """
     config = Config()  # This loads the ENDPOINT and KEY from environment variables
-    client = AzureLanguageServiceClient(config)
-    return client
+    return AzureLanguageServiceClient(config)
 
 
 def test_azure_language_service_client(azure_client):
