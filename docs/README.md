@@ -16,15 +16,15 @@ Before you begin, ensure you have the following:
 
 1. **Clone the Repository** (if applicable):
    ```bash
-   git clone https://github.com/zakaria-source/dataleon_CLU_test.git
-   cd dataleon_CLU_test
+   git clone https://github.com/zakaria-source/dataleon_test.git
+   cd dataleon_test
    ```
 
 2. **Set up a Virtual Environment** (recommended):
     - For macOS/Linux:
       ```bash
       python3 -m venv .venv
-      source .venv/bin/activate
+      source .venv/Scripts/activate
       ```
     - For Windows:
       ```cmd
@@ -32,10 +32,10 @@ Before you begin, ensure you have the following:
       .\.venv\Scripts\activate
       ```
 
-3. **Install Dependencies**:
-   Ensure `requirements.txt` includes `azure-language-service-client` and other necessary packages.
+3. **Install the package**:
+   Ensure `setup.py` includes `azure-language-service-client` and other necessary packages.
    ```bash
-   pip install -r requirements.txt
+   pip install .
    ```
 
 ## Configuration
@@ -55,15 +55,15 @@ By abstracting the service client, the SERVICE_TYPE in this case should be set t
 
 ## Usage
 
-Example of analyzing text:
+To use the Azure Language Service Client, simply run the `main.py` script. The program will prompt you to enter a question, and upon receiving your input, it will process the text and return all relevant information provided by the Azure Conversation Language Understanding (CLU) service.
 
-```python
-from azure_language_service_client import AzureLanguageClient
+Here's how to get started:
 
-client = AzureLanguageClient()
-text = "Hello, how can I help you today?"
-result = client.analyze_text(text)
-print(result)
+1. Ensure you've followed the installation and configuration steps outlined above.
+2. Run the `main.py` script:
+
+```bash
+python main.py
 ```
 
 ## Running Tests
