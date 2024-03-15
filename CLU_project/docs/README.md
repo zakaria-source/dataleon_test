@@ -16,8 +16,8 @@ Before you begin, ensure you have the following:
 
 1. **Clone the Repository** (if applicable):
    ```bash
-   git clone <repository-url>
-   cd <repository-name>
+   git clone https://github.com/zakaria-source/dataleon_CLU_test.git
+   cd dataleon_CLU_test
    ```
 
 2. **Set up a Virtual Environment** (recommended):
