@@ -15,29 +15,39 @@ class ConversationHandler:
     @staticmethod
     def display_analysis_results(result):
         """
-        Displays analysis results in a structured format.
+        Displays analysis results in a structured and more readable format.
 
         Args:
-            result (dict): The analysis result.
+            result (dict): The analysis result containing the top intent,
+                           entities, and query.
         """
-        top_intent = result["result"]["prediction"]["topIntent"]
-        entities = result["result"]["prediction"]["entities"]
-        print("\nAnalysis Result:\nTop Intent:", top_intent)
+        prediction = result.get("result", {}).get("prediction", {})
+        top_intent = prediction.get("topIntent", "No intent detected")
+        entities = prediction.get("entities", [])
+        intents = prediction.get("intents", [])
 
-        intent_details = next(
-            (intent for intent in result["result"]["prediction"]["intents"] if intent["category"] == top_intent), None)
+        # Simplify finding the intent details
+        intent_details = next((intent for intent in intents if intent.get("category") == top_intent), None)
+
+        print(f"\nAnalysis Result:\n- Top Intent: {top_intent}")
+
         if intent_details:
-            print("Intent Category:", intent_details["category"])
-            print("Intent Confidence Score:", intent_details["confidenceScore"])
+            print(f"- Intent Category: {intent_details.get('category')}")
+            print(f"- Intent Confidence Score: {intent_details.get('confidenceScore')}")
         else:
-            print("Intent details not available.")
+            print("- Intent details not available.")
 
-        print("\nEntities:")
-        for entity in entities:
-            print(
-                f"- Category: {entity['category']}, Text: {entity['text']}, Confidence Score: {entity['confidenceScore']}")
+        if entities:
+            print("\nEntities:")
+            for entity in entities:
+                category = entity.get('category', 'Unknown category')
+                text = entity.get('text', 'No text')
+                confidence = entity.get('confidenceScore', 0)
+                print(f"  - Category: {category}, Text: {text}, Confidence Score: {confidence}")
+        else:
+            print("\nNo entities detected.")
 
-        print("\nQuery:", result["result"]["query"])
+        print(f"\nQuery: {result.get('result', {}).get('query', 'No query provided')}")
 
     def run(self, language="en"):
         """
