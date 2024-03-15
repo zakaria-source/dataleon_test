@@ -63,6 +63,7 @@ Here's how to get started:
 2. Run the `main.py` script:
 
 ```bash
+cd src
 python main.py
 ```
 
