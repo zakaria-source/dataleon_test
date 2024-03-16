@@ -44,8 +44,8 @@ Configure the client with your Azure Language Service credentials by creating a 
 directory:
 
 ```plaintext
-AZURE_LANGUAGE_SERVICE_ENDPOINT=<your_endpoint_here>
-AZURE_LANGUAGE_SERVICE_KEY=<your_key_here>
+ENDPOINT=<your_endpoint_here>
+KEY=<your_key_here>
 SERVICE_TYPE=<your_service_type_here>
 PROJECT_NAME=<your_project_name_here>
 DEPLOYMENT_SLOT=<your_deployment_slot_here>
