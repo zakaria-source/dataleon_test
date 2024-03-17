@@ -59,6 +59,11 @@ class ConversationHandler:
         print("Enter some text to analyze ('quit' to stop):")
         while True:
             user_text = input()
+
+            while not user_text.strip():
+                print("The input is empty. Please enter some text to analyze:")
+                user_text = input()
+
             if user_text.lower() == 'quit':
                 break
             result = self.language_service_client.analyze_conversation(user_text, language)
